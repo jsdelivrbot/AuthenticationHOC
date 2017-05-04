@@ -1,6 +1,8 @@
 import React from 'react'
 
-export default () => {
+import requireAuthentication from '../enhancers/requireAuthentication'
+
+const Resources = () => {
   return (
     <div>
       <h4>Super Secret Resources</h4>
@@ -12,3 +14,5 @@ export default () => {
     </div>
   )
 }
+
+export default requireAuthentication(Resources)

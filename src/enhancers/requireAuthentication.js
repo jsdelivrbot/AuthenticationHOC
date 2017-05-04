@@ -1,11 +1,32 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
 
-export default function(ComposedComponent) {
+export default function(EnhancedComponent) {
   class Authentication extends Component {
+    static contextTypes = {
+      router: React.PropTypes.object
+    }
+
+    componentWillMount() {
+      if (!this.props.authenticated) {
+        this.context.router.push('/')
+      }
+    }
+
+    componentWillReceiveProps(nextProps) {
+      if (!nextProps.authenticated) {
+        this.context.router.push('/')
+      }
+    }
+
     render() {
-      return <ComposedComponent {...this.props} />
+      return <EnhancedComponent {...this.props} />
     }
   }
 
-  return Authentication
+  function mapStateToProps(state) {
+    return { authenticated: state.authenticated }
+  }
+
+  return connect(mapStateToProps)(Authentication)
 }

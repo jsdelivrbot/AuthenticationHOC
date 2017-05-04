@@ -5,6 +5,7 @@ import { createStore, applyMiddleware } from 'redux'
 import { Router, Route, browserHistory } from 'react-router'
 
 import App from './components/app'
+import requireAuthentication from './enhancers/requireAuthentication'
 import Resources from './components/resources'
 import reducers from './reducers'
 
