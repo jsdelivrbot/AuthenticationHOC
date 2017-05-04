@@ -8,7 +8,7 @@ import App from './components/app'
 import Resources from './components/resources'
 import reducers from './reducers'
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const createStoreWithMiddleware = applyMiddleware()(createStore)
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
@@ -17,5 +17,6 @@ ReactDOM.render(
         <Route path="resources" component={Resources} />
       </Route>
     </Router>
-  </Provider>
-  , document.querySelector('.container'))
+  </Provider>,
+  document.querySelector('.container')
+)
